@@ -8,7 +8,7 @@ Addon for uSync Migrations that duplicates any Block List content to Block List 
 
 All block list element types are duplicated (with the suffix "Settings") and all block list content is included in both settings and content.
 
-Once the migration is finished, you can delete properties from the Content Element or the Settings Element, choosing which property one you want to keep in each case.
+Once the migration is finished, you can delete properties from the Content Element or the Settings Element, choosing which property you want to keep in each case.
 
 How to use:
 
@@ -16,3 +16,4 @@ How to use:
 2. Run a uSync Migration including only Data Types and Content Types, and complete the import of these.
 3. Repeat step 2. This is necessary for the content element types to be duplicated.
 4. Run a Content migration and import
+5. Manually go through each Block List Content and Settings element and decide which properties to keep on each.
