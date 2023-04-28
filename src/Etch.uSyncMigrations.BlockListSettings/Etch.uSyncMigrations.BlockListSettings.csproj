@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Authors>Michael Chart</Authors>
+    <Company>Etch</Company>
+    <Description>Addon for uSync Migrations that duplicates any Block List content to Block List settings, facilitating the use of Block List settings elements.</Description>
+    <RepositoryUrl>https://github.com/EtchUK/Etch.uSyncMigrations.BlockListSettings</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/EtchUK/Etch.uSyncMigrations.BlockListSettings</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="uSync.Migrations" Version="0.1.0-ci.243" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
+
+</Project>
