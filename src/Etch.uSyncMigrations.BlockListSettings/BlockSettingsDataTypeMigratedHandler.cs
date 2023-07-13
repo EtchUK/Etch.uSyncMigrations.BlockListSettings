@@ -1,15 +1,15 @@
-﻿using System.Xml.Linq;
+﻿using Newtonsoft.Json;
+using System.Xml.Linq;
+using Umbraco.Cms.Core;
 using Umbraco.Cms.Core.Events;
 using Umbraco.Cms.Core.Models;
-using uSync.Migrations.Notifications;
-using uSync.Core;
-using Newtonsoft.Json;
 using Umbraco.Cms.Core.PropertyEditors;
 using Umbraco.Cms.Core.Services;
-using Umbraco.Cms.Core;
 using Umbraco.Extensions;
+using uSync.Core;
+using uSync.Migrations.Notifications;
 
-namespace LimeWoodHotel.Website.Migrations;
+namespace Etch.uSyncMigrations.BlockListSettings;
 
 public class BlockSettingsDataTypeMigratedHandler : INotificationHandler<SyncMigratedNotification<DataType>>
 {

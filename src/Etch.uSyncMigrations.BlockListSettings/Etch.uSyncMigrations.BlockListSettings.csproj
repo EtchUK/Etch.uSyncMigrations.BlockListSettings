@@ -14,11 +14,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="uSync.Migrations" Version="0.1.0-ci.243" />
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\..\README.md" Pack="true" PackagePath="\"/>
+    <PackageReference Include="uSync.Migrations" Version="4.0.0-phase.3" />
   </ItemGroup>
 
 </Project>

@@ -3,7 +3,7 @@ using Umbraco.Cms.Core.DependencyInjection;
 using Umbraco.Cms.Core.Models;
 using uSync.Migrations.Notifications;
 
-namespace LimeWoodHotel.Website.Migrations;
+namespace Etch.uSyncMigrations.BlockListSettings;
 
 public class BlockSettingsNotificationComposer : IComposer
 {
