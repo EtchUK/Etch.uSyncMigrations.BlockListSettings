@@ -13,7 +13,7 @@ Once the migration is finished, you can delete properties from the Content Eleme
 How to use:
 
 1. Install `Etch.uSyncMigrations.BlockListSettings`.
-2. Run a uSync Migration including only Data Types and Content Types, and complete the import of these.
-3. Repeat step 2. This is necessary for the content element types to be duplicated.
-4. Run a Content migration and import
+2. Run the uSync Migration "Convert files" step, and then click to import Settings (i.e. data types and content types only)
+3. Reload the uSync Migrations page and go into the conversion, and click "Run conversion again", and re-import Settings. You have to do this conversion twice for the Settings doc types to be created.
+4. Run a Content import
 5. Manually go through each Block List Content and Settings element and decide which properties to keep on each.
