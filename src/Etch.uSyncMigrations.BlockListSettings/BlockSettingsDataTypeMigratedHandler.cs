@@ -7,6 +7,7 @@ using Umbraco.Cms.Core.PropertyEditors;
 using Umbraco.Cms.Core.Services;
 using Umbraco.Extensions;
 using uSync.Core;
+using uSync.Migrations.Models;
 using uSync.Migrations.Notifications;
 
 namespace Etch.uSyncMigrations.BlockListSettings;
@@ -46,6 +47,7 @@ public class BlockSettingsDataTypeMigratedHandler : INotificationHandler<SyncMig
             }
             var folder = this.contentTypeService.GetContainer(contentType.ParentId);
             var alias = $"{contentType.Alias}Settings";
+            notification.Context.ContentTypes.TryGetCompositionsByAlias(contentType.Alias, out var compositionAliases);
             var settingsContentType = new uSync.Migrations.Models.NewContentTypeInfo
             {
                 Alias = alias,
@@ -56,19 +58,28 @@ public class BlockSettingsDataTypeMigratedHandler : INotificationHandler<SyncMig
                 IsElement = true,
                 Key = alias.ToGuid(),
                 Properties = contentType.PropertyGroups
-                    .SelectMany(pg => pg.PropertyTypes)
-                    .Select(pt =>
-                    {
-                        var dataType = notification.Context.DataTypes.GetByDefinition(pt.DataTypeKey);
-                        return new uSync.Migrations.Models.NewContentTypeProperty
+                    .SelectMany(pg => pg.PropertyTypes
+                        .Select(pt =>
                         {
-                            Alias = pt.Alias,
-                            Name = pt.Name,
-                            DataTypeAlias = dataType.DataTypeName,
-                            OriginalEditorAlias = pt.PropertyEditorAlias,
-                        };
-                    })
-                    .ToList()
+                            var dataType = notification.Context.DataTypes.GetByDefinition(pt.DataTypeKey);
+                            return new uSync.Migrations.Models.NewContentTypeProperty
+                            {
+                                Alias = pt.Alias,
+                                Name = pt.Name,
+                                DataTypeAlias = dataType.DataTypeName,
+                                OriginalEditorAlias = pt.PropertyEditorAlias,
+                                TabAlias = pg.Alias,
+                            };
+                        }))
+                    .ToList(),
+                 CompositionAliases = compositionAliases?.ToList() ?? new List<string>(),
+                 Tabs = contentType.PropertyGroups.Select(pg => new NewContentTypeTab
+                 {
+                    Name = pg.Name ?? pg.Alias,
+                    Alias = pg.Alias,
+                    SortOrder = pg.SortOrder,
+                    Type = pg.Type.ToString()
+                 })
             };
 
             notification.Context.ContentTypes.AddNewContentType(settingsContentType);

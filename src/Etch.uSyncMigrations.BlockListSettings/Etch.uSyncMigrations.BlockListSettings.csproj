@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="uSync.Migrations" Version="4.0.0-phase.3" />
+    <PackageReference Include="uSync.Migrations" Version="4.0.0-phase.4" />
   </ItemGroup>
 
 </Project>

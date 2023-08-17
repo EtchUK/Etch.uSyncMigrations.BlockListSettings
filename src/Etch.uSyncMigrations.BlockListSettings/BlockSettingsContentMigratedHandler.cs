@@ -58,7 +58,16 @@ public class BlockSettingsContentMigratedHandler : INotificationHandler<SyncMigr
             return false;
         }
 
-        var model = JsonConvert.DeserializeObject<BlockValue>(value);
+        BlockValue? model;
+        try
+        {
+            model = JsonConvert.DeserializeObject<BlockValue>(value);
+        }
+        catch
+        {
+            return false;
+        }
+
         if (model == null)
         {
             return false;
